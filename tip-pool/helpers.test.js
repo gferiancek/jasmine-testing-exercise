@@ -32,6 +32,34 @@ describe('helpers.js test', function () {
     });
   });
 
+  describe('appendDeleteBtn()', function () {
+    it('should add a td with delete button on provided tr', function () {
+      let tr = document.createElement('tr');
+      expect(tr.children.length).toEqual(0);
+
+      appendDeleteBtn(tr);
+      expect(tr.children.length).toEqual(1);
+      expect(tr.children[0].innerText).toEqual('X');
+    });
+  });
+
+  describe('deleteElement()', function () {
+    it('should remove parent tr from serverTable on button click', function () {
+      serverNameInput.value = 'Max';
+      submitServerInfo();
+
+      let tBody = document.querySelector('#serverTable tbody');
+      console.log(tBody.children.length, 'FIRST CHECK');
+
+      expect(tBody.children.length).toEqual(1);
+
+      let deleteBtn = tBody.children[0].children[2];
+      deleteBtn.click();
+
+      expect(tBody.children.length).toEqual(0);
+    });
+  });
+
   afterEach(function () {
     allPayments = {};
     paymentId = 0;
@@ -42,5 +70,7 @@ describe('helpers.js test', function () {
     billAmtInput.value = '';
     tipAmtInput.value = '';
     serverTbody.innerHTML = '';
+    serverNameInput.value = '';
+    allServers = {};
   });
 });

@@ -24,10 +24,11 @@ describe('servers.js test', function () {
     it('should append new tr serverTable', function () {
       submitServerInfo();
 
-      let tdList = document.querySelectorAll('#server1 td');
-      expect(tdList.length).toEqual(2);
+      let tdList = document.querySelectorAll('#serverTable tr td');
+      expect(tdList.length).toEqual(3);
       expect(tdList[0].innerText).toEqual('Alice');
       expect(tdList[1].innerText).toEqual('$0.00');
+      expect(tdList[2].innerText).toEqual('X');
     });
   });
 

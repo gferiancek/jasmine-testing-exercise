@@ -56,10 +56,11 @@ describe('payments.js test', function () {
       submitPaymentInfo();
       let tdList = document.querySelectorAll('#payment1 td');
 
-      expect(tdList.length).toEqual(3);
+      expect(tdList.length).toEqual(4);
       expect(tdList[0].innerText).toEqual('$100');
       expect(tdList[1].innerText).toEqual('$20');
       expect(tdList[2].innerText).toEqual('20%');
+      expect(tdList[3].innerText).toEqual('X');
     });
   });
 
@@ -79,5 +80,7 @@ describe('payments.js test', function () {
     }
     paymentId = 0;
     allPayments = {};
+    billAmtInput.value = '';
+    tipAmtInput.value = '';
   });
 });
